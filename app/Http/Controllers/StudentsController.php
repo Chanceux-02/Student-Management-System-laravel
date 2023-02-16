@@ -68,19 +68,27 @@ class StudentsController extends Controller
         return redirect('/')->with('message', 'New student was added successfully');
     }
 
-    public function update(Request $request, Students $student){
+    public function update(Request $request, $id){
+
+        $user = Students::find($id);
+
+        $user->first_name = $request->input('first_name');
+        $user->email = $request->input('email');
+        $user->save();
+    
+        return redirect('/')->with('message', 'New student was updated successfully');
         
-        $validated = $request->validate([
-            "first_name" => ['required', 'min:4'],
-            "last_name" => ['required', 'min:4'],
-            "gender" => ['required'],
-            "age" => ['required'],
-            "email" => ['required', 'email']
+        // $validated = $request->validate([
+        //     "first_name" => ['required', 'min:4'],
+        //     "last_name" => ['required', 'min:4'],
+        //     "gender" => ['required'],
+        //     "age" => ['required'],
+        //     "email" => ['required', 'email']
             
-        ]);
+        // ]);
         
-        $student->update($validated);
-        return back()->with('message', 'Data was successfully updated');
+        // $student->update($validated);
+        // return back()->with('message', 'Data was successfully updated');
 
         // if(DB::table('Students')->update($validated)){
         //     return back()->with('message', 'Data was successfully updated');
@@ -90,6 +98,15 @@ class StudentsController extends Controller
         
        
         //  dd($request);
+    }
+    public function destroy($id){
+        
+        $user = Students::find($id);
+        // print_r($user);
+        $user->delete();
+    
+        return redirect('/')->with('message', 'New student was deleted successfully');
+
     }
 
 }

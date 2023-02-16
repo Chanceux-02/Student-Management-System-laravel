@@ -32,6 +32,9 @@
                     <th scope="col" class="py- px-6">
                         {{-- wala unod para ma insert ang btn sa column --}}
                     </th>
+                    <th scope="col" class="py- px-6">
+                        {{-- wala unod para ma insert ang btn sa column --}}
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -50,7 +53,7 @@
                         {{$student->age}} 
                     </td>
                     <td class="py-4 px-6">
-                        <a href="/student/{{$student->id}}" class="bg-sky-600 text-white px-4 py-2 rounded">view</a> 
+                        <a href="/student/{{$student->id}}" class="bg-sky-600 text-white px-4 py-2 rounded">View</a> 
                     </td>
                 </tr>
                 @endforeach 

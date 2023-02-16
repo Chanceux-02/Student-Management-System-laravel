@@ -3,7 +3,8 @@
 
 <header class="max-w-lg mx-auto">
 
-        <h1 class="text-4xl font-bold text-white text-center">Edit {{$student->first_name}} {{$student->last_name}}</h1>
+        <h1 class="text-4xl font-bold text-white text-center">{{$student->first_name}} {{$student->last_name}}</h1>
+        <a href="/" class="text-white"><- back</a>
 
 </header> 
 
@@ -62,7 +63,12 @@
                     </p>
                     @enderror
             </div>
-            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Update</button>
+            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200">Update</button>
+        </form>
+        <form action="/student/delete/{{$student->id}}" method="POST" class="flex flex-col mt-5">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200">Delete</button>
         </form>
     </section>
 </main>
